@@ -1,0 +1,21 @@
+<!--
+  @description       :
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             :
+  @last modified on  : 03-26-2026
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+	<template if:true={contact}>
+		<a href="#" onclick={handleClick}>
+			<lightning-layout vertical-align="center">
+				<lightning-layout-item>
+					<img src={contact.Picture__c} alt="Profile photo" />
+				</lightning-layout-item>
+				<lightning-layout-item padding="around-small">
+					<p>{contact.Name}</p>
+				</lightning-layout-item>
+			</lightning-layout>
+		</a>
+	</template>
+</template>
