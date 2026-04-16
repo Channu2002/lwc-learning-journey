@@ -1,0 +1,61 @@
+<!--
+  @description       :
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             :
+  @last modified on  : 04-16-2026
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <lightning-card title="Key Account Details" icon-name="standard:account">
+
+        <!-- 1. LOADING STATE -->
+        <template lwc:if={isLoading}>
+            <lightning-spinner alternative-text="Loading details..." size="medium"></lightning-spinner>
+        </template>
+
+        <!-- 2. SUCCESS STATE -->
+        <template lwc:elseif={accountData}>
+            <div class="slds-p-horizontal_medium slds-grid slds-wrap">
+
+                <div class="slds-col slds-size_1-of-2 slds-p-bottom_small">
+                    <p class="slds-text-title">Account Name</p>
+                    <p class="slds-text-heading_small">{name}</p>
+                </div>
+
+                <div class="slds-col slds-size_1-of-2 slds-p-bottom_small">
+                    <p class="slds-text-title">Industry</p>
+                    <p class="slds-text-heading_small">
+                        <lightning-formatted-text value={industry}></lightning-formatted-text>
+                    </p>
+                </div>
+
+                <div class="slds-col slds-size_1-of-2">
+                    <p class="slds-text-title">Annual Revenue</p>
+                    <p class="slds-text-heading_small">
+                        <!-- Automatically formats as $1,000,000 based on locale -->
+                        <lightning-formatted-number value={revenue} format-style="currency"></lightning-formatted-number>
+                    </p>
+                </div>
+
+                <div class="slds-col slds-size_1-of-2">
+                    <p class="slds-text-title">Phone</p>
+                    <p class="slds-text-heading_small">
+                        <!-- Makes the phone number clickable -->
+                        <lightning-formatted-phone value={phone}></lightning-formatted-phone>
+                    </p>
+                </div>
+
+            </div>
+        </template>
+
+        <!-- 3. ERROR STATE -->
+        <template lwc:elseif={errorMessage}>
+            <div class="slds-p-around_medium">
+                <div class="slds-notify slds-notify_alert slds-alert_error">
+                    <h2>{errorMessage}</h2>
+                </div>
+            </div>
+        </template>
+
+    </lightning-card>
+</template>
