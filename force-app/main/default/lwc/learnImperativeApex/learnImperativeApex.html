@@ -1,0 +1,28 @@
+<!--
+  @description       :
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             :
+  @last modified on  : 04-21-2026
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+	<lightning-card title="Account Architect Manager" icon-name="standard:account">
+		<div class="slds-p-around_medium">
+			<!-- Form Section -->
+			<lightning-input label="Account Name" value={accName} onchange={handleNameChange}></lightning-input>
+			<lightning-input label="Phone" value={accPhone} onchange={handlePhoneChange}></lightning-input>
+
+			<div class="slds-m-top_small">
+				<lightning-button label="Save Account" variant="brand" onclick={handleSave}></lightning-button>
+			</div>
+
+			<!-- List Section -->
+			<h3 class="slds-m-top_large slds-text-heading_small">Recent Accounts:</h3>
+			<template if:true={accounts.data}>
+				<template for:each={accounts.data} for:item="acc">
+					<p key={acc.Id}>{acc.Name} - {acc.Phone}</p>
+				</template>
+			</template>
+		</div>
+	</lightning-card>
+</template>
