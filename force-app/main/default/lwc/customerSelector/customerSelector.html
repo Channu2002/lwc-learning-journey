@@ -1,0 +1,30 @@
+<!--
+  @description       :
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             :
+  @last modified on  : 04-22-2026
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+    <lightning-card title="Select Customer">
+        <template if:true={accounts}>
+            <ul>
+                <template for:each={accounts} for:item="acc">
+                    <li key={acc.Id}>
+                        <div
+                            data-id={acc.Id}
+                            onclick={handleSelect}
+                            style="cursor:pointer; padding:10px; border-bottom:1px solid #ddd;"
+                        >
+                            {acc.Name}
+                        </div>
+                    </li>
+                </template>
+            </ul>
+        </template>
+
+        <template if:true={error}>
+            <p>Error loading accounts</p>
+        </template>
+    </lightning-card>
+</template>
